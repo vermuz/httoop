@@ -35,7 +35,7 @@ class Headers(with_metaclass(HTTPSemantic, CaseInsensitiveDict)):
 			return []
 
 		Element = HEADER.get(fieldname, HeaderElement)
-		return Element.sorted([Element.parse(element) for element in Element.split(fieldvalue)])
+		return Element.sorted([Element.parse(element) for element in Element.split(fieldvalue.encode('ascii'))])
 
 	def element(self, fieldname, default=None):
 		u"""Treat the field as single element"""

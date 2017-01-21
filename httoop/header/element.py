@@ -82,6 +82,7 @@ class HeaderElement(with_metaclass(HeaderType)):
 		"""Transform 'token;key=val' to ('token', {'key': 'val'})."""
 		# Split the element into a value and parameters. The 'value' may
 		# be of the form, "token=token", but we don't split that here.
+		assert isinstance(elementstr, bytes)
 		atoms = [x.strip() for x in cls.RE_PARAMS.split(elementstr) if x.strip()] or [b'']
 
 		value = atoms.pop(0)
